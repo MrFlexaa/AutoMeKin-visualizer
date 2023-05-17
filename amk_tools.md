@@ -18,7 +18,7 @@ Here I present the following updates
 
 - SVG: New script created with the idea of obtaining the interactive network figure (created with Bokeh) in SVG format. This coulnd't be introduced in RXVisualizer due to certain incompatibilities.
 
-- get_networkx: This script accesses the functions of the RXVisualizer and RXreader modules to create the networks and their interactive representations.
+- get_network: This script accesses the functions of the RXVisualizer and RXreader modules to create the networks and their interactive representations.
 I would like to mention that in the amk_tools repository, there is a command that serves the same purpose **amk_gen_view** (follow the UserGuide **Workflow** for futher information). However, I have used this one that I created because I find it more convenient to use.
 
 
