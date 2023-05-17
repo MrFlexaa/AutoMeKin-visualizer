@@ -11,7 +11,9 @@ The code presented in AUTOMEKIN_visualizer is based on the following modules fro
 
 To better understand how these tools work, visit this repository and follow the UserGuide Introduction https://github.com/dgarayr/amk_tools/blob/master/UserGuide.md
 
-## AUTOMEKIN VISUALIZER by Luis Guerrero Méndez
+
+
+### AUTOMEKIN VISUALIZER by Luis Guerrero Méndez
 Here I present the following updates:
 
 - RXVisualizer (new version): This script is esesentially the same as RXVisualizer from amk_tools https://github.com/dgarayr/amk_tools/blob/master/RXVisualizer.py , but with some improvements which will be explained.
