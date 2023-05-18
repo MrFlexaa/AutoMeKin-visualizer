@@ -23,8 +23,8 @@ I would like to mention that in the amk_tools repository, there is a command tha
 
 - SVG: New script created with the idea of obtaining the interactive network figure (created with Bokeh) in SVG format. This coulnd't be introduced in RXVisualizer due to certain incompatibilities.
 
-Remark that the **RXReader** module has not been changed and will be used from **amk_tools** repository
-Futhermore, when following the guide, it is evident that the **RXVisualizer** from **amk_tools** (since the new version of the module only adds some additional functions and decorative parameters for the graphs.
+Remark that the **RXReader** module has not been changed and will be used from **amk_tools** repository.
+Futhermore, when following the guide, it is evident that the **RXVisualizer** from **amk_tools** (since the new version of the module only adds some additional functions and decorative parameters for the graphs).
 
 
 
