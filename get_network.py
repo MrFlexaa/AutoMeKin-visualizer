@@ -1,12 +1,11 @@
 #script to get the network
 
+from amk_tools.RXVisualizer import *
 from amk_tools import RXReader as arx
 from amk_tools import RXVisualizer as arxviz
 import networkx as nx
 import sys
 import os
-
-
 
 # from amk_tools 
 def generate_network(finaldir,source, formula):
@@ -65,28 +64,34 @@ else:
         isExist=os.path.exists(dir_network)
         if not isExist:
             os.makedirs(dir_network)
-        formulass=["HO+C2H3N","CHO+CH3N", "H2N+C2H2O", "CH2+CH2NO","HN+C2H3O","C2HO+H3N", "CH2N+CH2O",  "HNO+C2H3", "CH+CH3NO" ] #list of formulas target
+        formulass=['CH+CH2NO', 'CH2+CHNO','CHN+CH2O','CHO+CH2N','CN+CH3O','H2N+C2HO','H2O+CH2N','HO+C2H2N']
         for formulas in formulass:
             generate_network(finaldir, source, formulas)
-        
-    
+  
     target = arx.formula_locator(G,formula)
     limits = arx.node_synonym_search(G,[[source],target])
     path_list = arx.add_paths(G,limits[0],limits[1])
     # Printing all paths found
-    if len(sys.argv)>4:
-        grafica=str(sys.argv[4])
-        if grafica=='network':
-            newdir_net="network_paths"
-            dir_network=os.path.join(finaldir,newdir_net)
-            isExist=os.path.exists(dir_network)
-            if not isExist:
-                os.makedirs(dir_network)
-            # Reduce the graph, keeping only the nodes involved in paths
-            G = arx.graph_path_selector(G,path_list)
-            
-            # Generate visualization (& handle model addition)
-            layout = arxviz.generate_visualization(G,finaldir,title="Network visualization",outfile=dir_network+"\\network_"+formula+".html",
-                                                Nvibrations=-1,with_profiles=True,
-                                                layout_function=nx.kamada_kawai_layout) #nx.kamada_kawai_layout) nx.spring_layout()
-        #the networkx will be stored in the folder HL, in a subfolder called network_path
+    newdir_net="network_paths"
+    dir_network=os.path.join(finaldir,newdir_net)
+    isExist=os.path.exists(dir_network)
+    if not isExist:
+        os.makedirs(dir_network)
+    # Reduce the graph, keeping only the nodes involved in paths
+    G = arx.graph_path_selector(G,path_list)
+    
+    # Generate visualization (& handle model addition)
+    layout = arxviz.generate_visualization(G,finaldir,title="Network visualization",outfile=dir_network+"\\network_"+formula+".html",
+                                        Nvibrations=-1,with_profiles=True,
+                                        layout_function=nx.kamada_kawai_layout) #nx.kamada_kawai_layout) nx.spring_layout()
+#the networkx will be stored in the folder HL, in a subfolder called network_path
+
+
+
+
+
+
+
+
+    
+    
