@@ -43,8 +43,11 @@ we must use the command:
  ```python
  formulass=['CH+CH2NO', 'CH2+CHNO','CHN+CH2O','CHO+CH2N','CN+CH3O','H2N+C2HO','H2O+CH2N','HO+C2H2N']
  ```
-   
-   
+ 
+ 
+ 
+ 
+ 
 ## SVG.py
 
  
