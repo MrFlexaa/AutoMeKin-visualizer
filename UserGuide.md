@@ -30,3 +30,5 @@ In the case of Glicolonitrile here exposed we would get this:
 
 
 
+
+
