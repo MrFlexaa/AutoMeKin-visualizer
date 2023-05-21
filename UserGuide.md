@@ -4,7 +4,7 @@ To understand how the modules **RXReader** and **RXVisualizer** work, on wich th
 
 This script have the same funtion that **amk_gen_view.py** from **amk_tools**.
 The idea of this script is to get the CRN (chemical reaction networkx) once we have the data.
-The data that we will analyze is store in the RXNet.cg file (there are others RXNet files but this is the most important) in the directory FINAL_HL_MOL (or FINAL_LL_MOL, depending on the level of computation).
+The data that we will analyze is stored in the RXNet.cg file (there are others RXNet files but this is the most important) in the directory FINAL_HL_MOL (or FINAL_LL_MOL, depending on the level of computation).
 
 ```python
 finaldir="FINAL_HL_MOL"
@@ -20,12 +20,34 @@ data = joined_data #esto sirve para meterle los barrless
 # Building G
 G = arx.RX_builder(finaldir,data)
 ```
-If we want to represent the global CRN we use this part of the code. Here no parsing has been developed because we want a general image.
+* If we want to represent the global CRN we use the part of the code where no parsing has been developed yet, in order to get a general image.
+we must use the command: 
 
-we must use the command `$get_network.py finaldir global`
+  `$get_network.py FINAL_HL_GL global`
+  
+  I have used this finaldir name beacuse the molecule studied is **GL** (Glicolonitrile), you can use the name you want in the calculus.
 
+* If we want to parse by the source and the final formula of the path use this command:
 
-In the case of Glicolonitrile here exposed we would get this:
+  `$get_network.py FINAL_HL_GL MIN1 CN+CH3O `
+  
+  A new direcory will be created to store the network with the name of the corresponding formula
+  
+* To facilitate te data analysis process you can add the list of all the final formulas that you want to study. To use this strategy use the command:
+    
+   `$get_network.py FINAL_HL_GL all`
+   
+   I have added the formulas used in the study of Glicolonitrile. You can change it directly from the code at line 77. 
+   Again,  a new direcory will be created to store the network with the name of the corresponding formula
+  
+ ```python
+ formulass=['CH+CH2NO', 'CH2+CHNO','CHN+CH2O','CHO+CH2N','CN+CH3O','H2N+C2HO','H2O+CH2N','HO+C2H2N']
+ ```
+   
+ 
+ 
+ 
+
 
 
 
