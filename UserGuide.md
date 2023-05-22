@@ -99,7 +99,7 @@ ERROR: WARNING:bokeh.io.export:The webdriver raised a TimeoutException while wai
 
 ocurre al poner un style_information slo se puede utilizar el parametro pt no se puede vh para los tamaños
 
-![picture](images/CRN.svg=100x20)
+<img src="images/CRN.svg=100x20" width="200">
 
 
 
