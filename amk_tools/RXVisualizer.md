@@ -33,7 +33,7 @@ Here Im going to explain the changes presented in the new version of RXVisualize
   
   
 - In the same definition, **profile_bokeh_plot**, just before the energy_label are set up; we can change this data. We can also access to this information and change it. 
-  We can move the energy label with the same idea as mentioned above. 
+  We can move the energy label with the same idea as mentioned above (also **label_shift** is shown below).
   ```python
   def Elabel_shift(data,target_label, label_shift):
       if target_label in data['lab']:
@@ -43,13 +43,36 @@ Here Im going to explain the changes presented in the new version of RXVisualize
 
   `Elabel_shift(cds_lab_elab.data, "PRX", y)   #Move "PRX" y distance`
     
+- At the end of RXVisualizer have been added some new functions established (made by Diego Garay-Ruiz) to be used in conjunction with the module **SVG.py**, in order to     make easier the generation and analysis of this graphs. 
+
+  Here will be introduced some of these functions used in the **SVG** definition:
+
+    - `rescale_profiles(prof,rescale_factor=1)` Get larger or smaller profiles for the image.
+    - `arxvizz.label_shift(prof,"TS110",5) #move TSX y distance` Shift a specific label in a profile.
+    - `show_energy(prof)` Display energies for a profile
+    - We can also modify the colors of the paths that form the graph. Use a `color_palette` with a color or a set of colors (one for each path)
+    ```python 
+    #color_palette=['#956cb4','#6acc64','#ee854a','#4878d0'] 
+    color_palette=['#797979']
+    ```
+    `recolor_profile(prof,color_palette)` 
+    - `reset_profiles(prof)` Make all profiles visible, important to use after change some data of the graph, like using some parsing definitions.
+    - Some functions such as `read_and_path`, `select_by_mol` and `hide_by_mol` were created to analyse the paths of the graph and parsing them, but this idea has been          integrated in the **paths** definitions beacuse we can get the desired paths directly.
     
     
-    
-    
-    
-    
-    
+<br />
+<br />
+
+I would like to mention that two style_information has been added at the beggining of RXVisalizer because the second one must be use specifically with the **SVG.py**
+The size must be given in "pt" format, If we don't do it this way we have the following error from bokeh module:
+
+`ERROR: WARNING:bokeh.io.export:The webdriver raised a TimeoutException while waiting for a 'bokeh:idle' event to signify that the layout has rendered. Something may have gone wrong`
+
+The first time you see this error It may seem like a big problem, but it can be solved with that small detail. 
+
+
+
+   
     
     
     
