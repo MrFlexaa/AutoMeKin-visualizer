@@ -99,7 +99,13 @@ ERROR: WARNING:bokeh.io.export:The webdriver raised a TimeoutException while wai
 
 ocurre al poner un style_information slo se puede utilizar el parametro pt no se puede vh para los tamaños
 
-<img src="https://user-images.githubusercontent.com/16319829/81180309-2b51f000-8fee-11ea-8a78-ddfe8c3412a7.png" width=50% height=50%>
+
+https://raw.githubusercontent.com/MrFlexaa/AUTOMEKIN-visualizer/5e856c4b90e4e1c8d6dd71c1a6a765267bdb0936/images/CRN.svg?token=APO3MZARSD6T2PXRGH46AALENLADI
+
+![image](https://raw.githubusercontent.com/MrFlexaa/AUTOMEKIN-visualizer/5e856c4b90e4e1c8d6dd71c1a6a765267bdb0936/images/CRN.svg?token=APO3MZARSD6T2PXRGH46AALENLADI)
+
+
+
 
 
 
