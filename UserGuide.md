@@ -158,7 +158,7 @@ This function follows the same idea than **get_network.py**. We first create the
 The script will create a subfolder and will store there the resulting graphs.
 
 
-Its highly recommended to visit the RXVisualizerGuide.md  in order to understand some new definitions used in **SVG** 
+Its highly recommended to visit the RXVisualizerGuide.md  in order to understand some new definitions used in **SVG** https://github.com/MrFlexaa/AUTOMEKIN-visualizer/blob/master/amk_tools/RXVisualizer.md
 
 
 
