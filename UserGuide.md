@@ -76,9 +76,28 @@ def paths(source,formula, PR):
     return limits, path_list
 ```
 Here we create the graph based on the RXNet.cg data, in which barrierless paths are also included. Then the CRN is parsed by source, formula (target) and even PR (product).
-This code must me modified directly in order to make easier te workflow. 
+The **paths** function returns the list of paths that makes up the CRN. All this paths are included in the previous analysis, they are shown in the interactivate networkx generated above; but this script gives us the list of this paths containing all the steps. Once we have these paths the subsequent analysis is easier.
+
+This code must me modified directly in order to make easier te workflow.  To call the function we use:
+```python
+source = str('MIN29')
+formula = str('CH2N+CH2O')
+PR=str('PR156')  #parse prod 
+
+limits,path_list=paths(source, formula, PR)
+print(path_list)
+```
+the results is
+
+`[['MIN1', 'TS45', 'MIN7', 'TSb_21', 'PR44']]`
+In this case only one path has been found with this parameters. 
+Once we select the path which will be studied, we can use the **SVG** definition to represent it.
 
 
+
+ERROR: WARNING:bokeh.io.export:The webdriver raised a TimeoutException while waiting for a 'bokeh:idle' event to signify that the layout has rendered. Something may have gone wrong.
+
+ocurre al poner un style_information slo se puede utilizar el parametro pt no se puede vh para los tamaños
 
 
 
