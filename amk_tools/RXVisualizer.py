@@ -10,85 +10,37 @@ from jsmol_bokeh_extension import JSMol
 import networkx as nx
 import numpy as np
 import copy
-from bokeh.io import export_svg #esto es mio
+
 ### Styling control via dictionary: modify it directly to control font sizes, line widths...
-"""
-style_information = {
-    "networkTitleFont":"1.5vh", #tamaño en el network
-    "networkLabelFont":"2vh",
-    "profileAxisTitleFont":"3.2vh", #label de Energia
-    "profileAxisTickFont":"2.7vh", #ticksize de la Energia
-    "profileLabelFont":"15pt", #fontsize TS y PR
-    "profileLabelXOffset":-1, #dist label TS y PR
-    "profileLabelYOffset":4, #dist label TS y PR
-    "profileELabelYOffset":-26, #DIST de la E label debajo de cada TS y PR
-    "profileBoxHeight":2, #grosor del TS y PR
-    "profileLineWidth":1, #linewidth
 
-}
-"""
-"""
 style_information = {
-    "networkTitleFont":"1.5vh", #tamaño en el network
-    "networkLabelFont":"1.8vh",
-    "profileAxisTitleFont":"3.2vh", #label de Energia
-    "profileAxisTickFont":"2.7vh", #ticksize de la Energia
-    "profileLabelFont":"15pt", #fontsize TS y PR
-    "profileLabelXOffset":-1, #dist label TS y PR
-    "profileLabelYOffset":4, #dist label TS y PR
-    "profileELabelYOffset":-26, #DIST de la E label debajo de cada TS y PR
-    "profileBoxHeight":1.8, #grosor del TS y PR
-    "profileLineWidth":1 #linewidth
+    "networkTitleFont":"1.5vh", #size of network
+    "networkLabelFont":"2vh", #label fint in the network
+    #parameters on the Energy profile
+    "profileAxisTitleFont":"3.2vh", #label of Energy
+    "profileAxisFont": "15pt", #fontsize of yaxis
+    "profileAxisTickFont":"2.7vh", #ticksize of Energy
+    "profileLabelFont":"15pt", #fontsize TS and PR
+    "profileLabelXOffset":-1, #xaxis dist label TS and PR
+    "profileLabelYOffset":4, #yaxis dist label TS and PR
+    "profileELabelYOffset":-26, #dist of the E label below of each TS and PR
+    "profileBoxHeight":2, #height of the TS y PR
+    "profileLineWidth":1, #linewidth  #doesnt work as parameter in SVG definition
 }
-"""
-"""
-#style information 3, este lo uso para el netwprk del pathlist: ISM+BARRLESS, el que cree yo. 
+
+###SPECIFICALLY SVG FORMAT ###
 style_information = {
-    "networkTitleFont":"13pt", #tamaño en el network
+    "networkTitleFont":"13pt", 
     "networkLabelFont":"10pt",
-    "profileAxisTitleFont":"20pt", #label de Energia
-    "profileLabelFont":"40pt", #fontsize TS y PR
-    "profileLabelXOffset":-15, #dist label TS y PR
-    "profileLabelYOffset":5, #dist label TS y PR
-    "profileELabelYOffset":-25, #DIST de la E label debajo de cada TS y PR
-    "profileBoxHeight":2, #grosor del TS y PR
-    "profileLineWidth":1 #linewidth
+    "profileAxisTitleFont":"35pt", 
+    "profileAxisFont": "21pt",
+    "profileLabelFont":"27pt",
+    "profileLabelXOffset":-32, 
+    "profileLabelYOffset":10, 
+    "profileELabelYOffset":-48, 
+    "profileBoxHeight":1, 
+    "profileLineWidth":1,
 }
-"""
-#style information 4
-#intento de poner aqui el formato de las graficas SVG porque hay algunos parametros de arriba que no funcionan
-"""
-style_information = {
-    "networkTitleFont":"13pt", #tamaño en el network
-    "networkLabelFont":"10pt",
-    "profileAxisTitleFont":"27pt", #label de Energia
-    "profileLabelFont":"27pt", #fontsize TS y PR
-    "profileLabelXOffset":-25, #dist label TS y PR
-    "profileLabelYOffset":5, #dist label TS y PR
-    "profileELabelYOffset":-45, #DIST de la E label debajo de cada TS y PR
-    "profileBoxHeight":1, #grosor del TS y PR
-    "profileLineWidth":1,#linewidth
-    
-    "Elabelshift": 'no',
-    "Elabelshift_target": 'TS15',
-    "Elabelshift_energy": 8.8
-}
-"""
-
-#ultimo que le mande a dia 12/05/23
-
-style_information = {
-    "networkTitleFont":"13pt", #tamaño en el network
-    "networkLabelFont":"10pt",
-    "profileAxisTitleFont":"35pt", #label de Energia
-    "profileLabelFont":"27pt", #fontsize TS y PR
-    "profileLabelXOffset":-32, #dist label TS y PR
-    "profileLabelYOffset":10, #dist label TS y PR
-    "profileELabelYOffset":-48, #DIST de la E label debajo de cada TS y PR
-    "profileBoxHeight":1, #grosor del TS y PR
-    "profileLineWidth":1,#linewidth
-}
-
 
 # Basic management functions
 
@@ -404,41 +356,36 @@ def profile_bokeh_plot(G,profile_list,condition=[],width=600,height=600,out_back
                              min_border_left=int(width/6),output_backend=out_backend)
     bfig.xaxis.visible = False
     bfig.yaxis.axis_label = 'E (kcal/mol)'
-    #bfig.yaxis.axis_label_text_font = "Latex"
+    bfig.yaxis.axis_label_text_font = "Latex"
     bfig.yaxis.axis_label_text_font_size = style_information["profileAxisTitleFont"]
     bfig.yaxis.axis_label_text_font_style = "bold"
-    #bfig.yaxis.major_label_text_font_size = style_information["profileAxisTickFont"]
-    bfig.yaxis.major_label_text_font_size = '21pt'
-    bfig.y_range=bkm.Range1d(-20,69) #y_limit
 
-    #add ticks that you want in LATEX style
+    bfig.yaxis.major_label_text_font_size = style_information["profileAxisFont"]
+    bfig.y_range=bkm.Range1d(-19,139)
+
     bfig.yaxis.ticker=bkm.FixedTicker(ticks=[0,20,40,60,80,100,120,140,160])
-    #recall ticks as you want
     bfig.yaxis.major_label_overrides={0:'0', 20:'20', 40:'40', 60:'60', 80:'80', 100 :'100',120:'120' ,140:'140', 160:'160'}
-    bfig.yaxis.major_label_text_font='latex'   
+    #bfig.yaxis.major_label_text_font='latex'   #LATEX font style
 
     ###bfig.yaxis.formatter=bkm.BasicTickFormatter(use_scientific=True)
     palette = bokeh.palettes.d3['Category10'][10]
-    #list of colors used for each plot
+    #ESTE PALETTE TAMBIEN LO HE AÑADIDO YO
     palette=['#d65f5f','#956cb4','#8c613c','#dc7ec0','#797979','#d5bb67',
                     '#82c6e2','#4878d0','#6acc64','#797979','#dc7ec0','#6acc64','#4878d0',
                     '#d5bb67','#82c6e2','#956cb4','#956cb4','#d65f5f','#4878d0',
                     '#ee854a','#6acc64','#8c613c','#4878d0','#6acc64','#d65f5f']
-    #flip the axis: it works like plt.gca().invert_xaxis() in matplotlib
+
     bfig.x_range.flipped = True
-    #eliminate grid
     bfig.xgrid.grid_line_color = None
     bfig.ygrid.grid_line_color = None
-    #margin
     bfig.margin=(40,40,40,40)
     bfig.outline_line_color='white'
     # Generate the list of ColumnDataSources
     cds_paths = profile_datasourcer(G,profile_list)
     """
     ##########
-    #MIO
-    #here you can change the node data, if you can shift in xaxis
-    cds_paths[5].data['x'][0]=2
+    #here you can change the node data, if you want to shift the xaxis in any path
+    cds_paths[y].data['x'][0]=2  #access to the x-axis data of this node from path y
     cds_paths[5].data['x'][1]=3
     """
     # Check condition
@@ -471,6 +418,7 @@ def profile_bokeh_plot(G,profile_list,condition=[],width=600,height=600,out_back
         #my new function: the same idea than labelshift definition but here we move the energy label 
         #Elabel_shift(cds_lab_elab.data, style_information['Elabelshift_target'], style_information['Elabelshift_energy'])
         #Elabel_shift(cds_lab_elab.data, "PRX", y) Move "PRX" y distance
+
 
         energy_label = bkm.LabelSet(x="x",y="y",text="elab",source=cds_lab_elab,x_offset=style_information["profileLabelXOffset"],
                                     y_offset=style_information["profileELabelYOffset"],name="ENERGYLABELS",
@@ -1116,8 +1064,10 @@ def gen_view_cmd(args):
 
     
 
-#Definitions used in SVG script in order to export graphs in SVG format
 
+
+
+###FUNCTIONS USED IN SVG.py###
 
 def show_energy(prof):
 	# Display energies for a profile
