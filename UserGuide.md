@@ -155,6 +155,10 @@ def SVG(x):
 ```
 This function follows the same idea than **get_network.py**. We first create the graph G based on the data from RXNet.cg, but thins casewe parse the paths given by us (the paths got before)
 
+```python
+paths=[['MIN1', 'TS45', 'MIN7', 'TSb_21', 'PR44']]
+SVG(paths)
+```
 The script will create a subfolder and will store there the resulting graphs.
 
 
