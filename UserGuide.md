@@ -100,20 +100,7 @@ def SVG(x):
     
     #parameters of the figure
     size_height=900
-    size_width=900 
-
-    newdir_net=str("SVG_GRAPHS") #new dir created
-    newdir_net_2=str(x[0])
-    dir_network=os.path.join(finaldir,newdir_net)
-    isExist=os.path.exists(dir_network)
-    if not isExist:
-        os.makedirs(dir_network)
-        
-    dir_network_2=os.path.join(dir_network,newdir_net_2)
-    isExist=os.path.exists(dir_network_2)
-    if not isExist:
-        os.makedirs(dir_network_2)
-    
+    size_width=900
     #Create the graph G
     # Reduce the graph, keeping only the nodes involved in paths
     data = arx.RX_parser(finaldir,rxnfile)
@@ -128,27 +115,12 @@ def SVG(x):
                                                 Nvibrations=-1,with_profiles=True,
                                                   layout_function=nx.kamada_kawai_layout) #nx.kamada_kawai_layout) nx.spring_layout()
 
-    #we just have a G created but we are going to modify its path
-    #G,paths = read_and_path(finaldir,rxnfile,barrierless,source,target,ethr=150)
     prof = arxvizz.profile_bokeh_plot(G,paths,width=size_width,height=size_height,out_backend="svg") #900, 900  
-    # Call functions to modify the profiles, as if we were in the GUI
-
-    # Styling for the resulting graph: RXVisualizer and change parameters
-    #color_palette=['#956cb4','#6acc64','#ee854a','#4878d0'] #list of colour, one for each path
     color_palette=['#797979'] #grey
-    
     arxvizz.rescale_profiles(prof,rescale_factor=1)
-    #label shift definition, move the label up or down for better results useful if you have several paths
-    #arxvizz.label_shift(prof,"TS110",5) #move TSX y distance
     arxvizz.show_energy(prof)
-    
     arxvizz.recolor_profile(prof,color_palette)
     
-    	# Generation of images, isolating the products in the list
-    #paths of those products
-    
-    #global,parsing MIN-->TARGET and PROD
-
     export_svg(prof,filename=dir_network_2+"\\"+str(x[0])+".svg",width=size_width,height=size_height) #900,900
     arxSVG.reset_profiles(prof)
 
