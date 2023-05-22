@@ -37,7 +37,7 @@ we must use the command:
     
    `$get_network.py FINAL_HL_GL all`
    
-   I have added the formulas used in the study of Glicolonitrile. You can change it directly from the code at line 77. 
+   I have added the formulas used in the study of Glicolonitrile. You can change it directly from the code at line 67. 
    Again,  a new direcory will be created to store the network with the name of the corresponding formula
   
  ```python
@@ -50,9 +50,35 @@ we must use the command:
  
 ## SVG.py
 
- 
- 
- 
+This script is used to get the CRN images of the profile energy in SVG format. This image can also be visualized in the interactivate network generated with **get_network.py**, but this image can only be downloaded in PNG format. That's why we use this sript, in order to export it as SVG.
+
+The first step is to get the step involved in a CRN with the **paths** definition:
+
+
+```python
+def paths(source,formula, PR):
+    finaldir = str("GL_H+/FINAL_HL_GL")
+    rxnfile = "RXNet.cg"
+    
+    #FINAL_HL_GL RXNet.cg MIN1 HO+C2H2N PR25
+    # Adding barrierless channels
+    data = arx.RX_parser(finaldir,rxnfile)
+    data_barrless = arx.RX_parser(finaldir=finaldir,rxnfile="RXNet.barrless")
+        
+    joined_data = [data[ii]+data_barrless[ii] for ii in range(len(data))]
+    data = joined_data #esto sirve para meterle los barrless
+    # Building and parsing G
+    G = arx.RX_builder(finaldir,data)
+    target = arx.formula_locator(G,formula)
+    limits = arx.node_synonym_search(G,[[source],target])
+    #parsing the paths
+    path_list = arx.add_paths(G,[source],[PR],skip_int_frags=True)
+    return limits, path_list
+```
+Here we create the graph based on the RXNet.cg data, in which barrierless paths are also included. Then the CRN is parsed by source, formula (target) and even PR (product).
+This code must me modified directly in order to make easier te workflow. 
+
+
 
 
 
