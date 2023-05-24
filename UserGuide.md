@@ -138,6 +138,19 @@ Its highly recommended to visit the RXVisualizerGuide.md  in order to understand
 
 
 
+# Results
+
+With this features we're able to take the data from AutoMeKin, create a global network:
+
+![picture](images/global.png)
+
+parse the paths that we want:
+
+`[['MIN1', 'TS45', 'MIN7', 'TSb_21', 'PR44']]`
+
+and visualize the energy profile in SVG format:
+
+![picture](images/CRN.svg)
 
 
 
