@@ -12,4 +12,30 @@ Further details:
 
 ### amk-tools 
 Please visit 
-![picture](images/global.png)
+* https://github.com/dgarayr/amk_tools
+* **amk_tools.md ** https://github.com/MrFlexaa/AUTOMEKIN-visualizer/blob/master/amk_tools.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
