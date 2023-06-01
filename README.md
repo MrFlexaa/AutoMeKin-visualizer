@@ -13,7 +13,7 @@ Further details:
 ### amk-tools 
 Please visit 
 * https://github.com/dgarayr/amk_tools
-* **amk_tools.md** https://github.com/MrFlexaa/AutoMeKin-visualizer/blob/master/amk_tools.md
+* **amk_tools.md** https://github.com/lguerreromendez/AutoMeKin-visualizer/blob/master/amk_tools.md
 
 
 
