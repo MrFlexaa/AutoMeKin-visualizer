@@ -134,7 +134,7 @@ SVG(paths)
 The script will create a subfolder and will store there the resulting graphs.
 
 
-Its highly recommended to visit the RXVisualizerGuide.md  in order to understand some new definitions used in **SVG** https://github.com/MrFlexaa/AutoMeKin-visualizer/blob/master/amk_tools/RXVisualizer.md
+Its highly recommended to visit the RXVisualizerGuide.md  in order to understand some new definitions used in **SVG** https://github.com/lguerreromendez/AutoMeKin-visualizer/blob/master/amk_tools/RXVisualizer.md
 
 
 
